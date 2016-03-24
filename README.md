@@ -22,7 +22,8 @@ Updates over SIFTtest:
 *  added keypoint filter to sort out good keypoint matches
 *  added homography transformation to  
    calculate 3D warp of query image to train img
-   
+
+![SIFT_filterMatches_homography sample output](http://i1.wp.com/www.tylerhenry.com/site/wp-content/uploads/2016/03/SIFT_v2_test1.jpg?resize=1024%2C501)  
 
 ---
 
@@ -42,3 +43,4 @@ Written in openFrameworks v.9.0 / XCode 7
 2.  [Finding Features](http://www.tylerhenry.com/finding-features/)
 3.  [SIFT Implementation in OpenFrameworks, Part 1](http://www.tylerhenry.com/sift-implementation-in-openframeworks-part-1/)
 
+![SIFTtest sample output](http://i2.wp.com/www.tylerhenry.com/site/wp-content/uploads/2016/03/SIFT_test5.jpg?resize=1024%2C490)  
