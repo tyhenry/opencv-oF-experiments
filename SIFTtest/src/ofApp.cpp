@@ -20,7 +20,6 @@ void ofApp::setup(){
     
     findImg.setImageType(OF_IMAGE_GRAYSCALE);
     fieldImg.setImageType(OF_IMAGE_GRAYSCALE);
-
     
     
     // wrap images with Mat class for use with SIFT
@@ -29,10 +28,13 @@ void ofApp::setup(){
     Mat fieldMat = toCv(fieldImg);
     
     
-
+    
+    // print image load time
+    // --------------
     uint64_t loadTime = ofGetElapsedTimeMillis() - startTime; // calc image load time
     ofLogNotice("Image Load") << "took " << loadTime << " ms" << endl; // print load time to console
     startTime = ofGetElapsedTimeMillis();   // reset startTime
+    // --------------
 
     
     
@@ -48,7 +50,7 @@ void ofApp::setup(){
     
     SiftFeatureDetector detector(2000); // SIFT detector object
     
-    // 400 = max number of keypoints to find
+    // 2000 = max number of keypoints to find
             //  all optional constructor args, with default values:
             //      (int nfeatures=0, int nOctaveLayers=3, double contrastThreshold=0.04,
             //       double edgeThreshold=10, double sigma=1.6);
@@ -125,11 +127,11 @@ void ofApp::setup(){
     //---------------------------------//
 
     
-    BFMatcher matcher(NORM_L1, true); // Brute-force Matcher object
+    BFMatcher matcher(NORM_L1, false); // Brute-force Matcher object
     // loops through every feature in matrix 1, comparing it to every feature in matrix 2
     // to find best match in matrix 2
     
-    // NORM_L2 is "normType" - use NORM_L1 or NORM_L2 for SIFT
+    // NORM_L1 is "normType" - use NORM_L1 or NORM_L2 for SIFT
     // false is "crossCheck" boolean - true would return more strict matches?
     // see here: http://docs.opencv.org/3.0-last-rst/modules/features2d/doc/common_interfaces_of_descriptor_matchers.html?highlight=bfmatcher#bfmatcher
     
