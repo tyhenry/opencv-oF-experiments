@@ -20,6 +20,7 @@ void ofApp::setup(){
     
     findImg.setImageType(OF_IMAGE_GRAYSCALE);
     fieldImg.setImageType(OF_IMAGE_GRAYSCALE);
+
     
     
     // wrap images with Mat class for use with SIFT
@@ -28,13 +29,10 @@ void ofApp::setup(){
     Mat fieldMat = toCv(fieldImg);
     
     
-    
-    // print image load time
-    // --------------
+
     uint64_t loadTime = ofGetElapsedTimeMillis() - startTime; // calc image load time
     ofLogNotice("Image Load") << "took " << loadTime << " ms" << endl; // print load time to console
     startTime = ofGetElapsedTimeMillis();   // reset startTime
-    // --------------
 
     
     
@@ -50,7 +48,7 @@ void ofApp::setup(){
     
     SiftFeatureDetector detector(2000); // SIFT detector object
     
-    // 2000 = max number of keypoints to find
+    // 400 = max number of keypoints to find
             //  all optional constructor args, with default values:
             //      (int nfeatures=0, int nOctaveLayers=3, double contrastThreshold=0.04,
             //       double edgeThreshold=10, double sigma=1.6);
@@ -127,13 +125,14 @@ void ofApp::setup(){
     //---------------------------------//
 
     
-    BFMatcher matcher(NORM_L1, false); // Brute-force Matcher object
+    BFMatcher matcher(NORM_L1, true); // Brute-force Matcher object
     // loops through every feature in matrix 1, comparing it to every feature in matrix 2
     // to find best match in matrix 2
     
-    // NORM_L1 is "normType" - use NORM_L1 or NORM_L2 for SIFT
-    // false is "crossCheck" boolean - true would return more strict matches?
-    // see here: http://docs.opencv.org/3.0-last-rst/modules/features2d/doc/common_interfaces_of_descriptor_matchers.html?highlight=bfmatcher#bfmatcher
+    // NORM_L1 is "normType" - use NORM_L1 or NORM_L2 for SIFT.  I think this determines the type of normalization done when determining "distance" (in n-dimensional space) between keypoints
+    // true is crossCheck boolean - this means that BFMatcher will only return a match when both keypoints find each other as their closest match.  This should be set to true to produce more reliable matches, but only if you have a lot of keypoints.
+    // a good visual example of cross-checking is on StackOverflow: http://stackoverflow.com/questions/11181823/why-we-need-crosscheckmatching-for-feature
+    // see here for BFMatcher reference: http://docs.opencv.org/3.0-last-rst/modules/features2d/doc/common_interfaces_of_descriptor_matchers.html?highlight=bfmatcher#bfmatcher
     
     vector<DMatch> matches; // vector to store matches
     
@@ -166,7 +165,18 @@ void ofApp::setup(){
     
     // draw results visualization into matchMat image-matrix
     
-    drawMatches(findMat, findKeypoints, fieldMat, fieldKeypoints, matches, matchMat);
+    drawMatches(findMat, findKeypoints, fieldMat, fieldKeypoints, matches, matchMat,
+                /* and optional parameters: */
+                Scalar::all(-1), Scalar::all(170), vector<char>(), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+    
+    // The Scalar::all(-1) through DRAW_RICH_KEYPOINTS parameters are optional.
+    // I'm copying the default arguments for them, except:
+    //      Scalar(170) which draws the unmatched keypoints in gray
+    //      DRAW_RICH_KEYPOINTS, which draws the size/rotation of the keypoints.
+    // The default arguments for those would be:
+    //      Scalar::all(-1) for random colors
+    //      cv::DrawMatchesFlags::DEFAULT for drawing all keypoints as little circles.
+    // see here for drawMatches() reference: http://docs.opencv.org/3.1.0/d4/d5d/group__features2d__draw.html#gsc.tab=0
 
     // convert matchMat to matchImg
     
