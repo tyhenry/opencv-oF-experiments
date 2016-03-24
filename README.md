@@ -1,6 +1,6 @@
 # OpenCV oF Experiments
 
-Code experiments related to computer vision & cinema posts on my [blog](http://www.tylerhenry.com/category/computervision/).  
+Code experiments related to computer vision & cinema posts on my [blog](http://www.tylerhenry.com/category/computervision/) at [tylerhenry.com](http://tylerhenry.com).  
 Mostly using OpenCV and openFrameworks.
 
 ### SIFTtest
