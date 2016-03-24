@@ -16,6 +16,7 @@ Written in openFrameworks v.9.0 / XCode 7
 **Intro tutorials**
 
 1.  [Getting Started](http://www.tylerhenry.com/getting-started/)
-2.  [Finding Features](http://www.tylerhenry.com/finding-features/)  
+2.  [Finding Features](http://www.tylerhenry.com/finding-features/)
+3.  [SIFT Implementation in OpenFrameworks, Part 1](http://www.tylerhenry.com/sift-implementation-in-openframeworks-part-1/)
 
 
