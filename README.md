@@ -59,6 +59,9 @@ Display local motion in video as a flow field, and also:
 * average motion per clip (red line on left)
 * track of average motion per clip (blue dot and path)
 
-![optFlowtest sample output](http://i1.wp.com/www.tylerhenry.com/site/wp-content/uploads/2016/03/optFlowtest1.jpg)
-[YouTube sample](https://www.youtube.com/watch?v=09hFXvW_NMs)
+** Related tutorial**
 
+[Optical Flow, Part 1](http://www.tylerhenry.com/optical-flow-part-1/)  
+
+[![optFlowtest sample output](http://i1.wp.com/www.tylerhenry.com/site/wp-content/uploads/2016/03/optFlowtest1.jpg)](https://www.youtube.com/watch?v=09hFXvW_NMs)  
+[YouTube sample](https://www.youtube.com/watch?v=09hFXvW_NMs)
