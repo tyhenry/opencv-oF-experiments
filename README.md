@@ -5,6 +5,16 @@ Mostly using OpenCV and openFrameworks.
 
 ---
 
+### griddedHistogram
+
+Contains Histogrid class: uses OpenCV calcHist to generate histograms for subsections of an ofImage.
+Written in openFrameworks v.9.0 / XCode 7
+
+*uses addons:* [`ofxCv`](https://github.com/kylemcdonald/ofxCv/) and `ofxOpenCv`
+
+![Hisogrid sample output](http://i1.wp.com/www.tylerhenry.com/site/wp-content/uploads/2016/03/histogrid_sample.jpg)
+
+
 ### SIFT_filterMatches_homography
 
 Updated, more complete SIFT implementation than SIFTtest (see below).  
